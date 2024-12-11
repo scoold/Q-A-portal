@@ -1,0 +1,6 @@
+com/erudika/scoold/utils/avatars/AvatarRepositoryProxyTest.class
+com/erudika/scoold/utils/avatars/GravatarAvatarRepositoryTest.class
+com/erudika/scoold/utils/avatars/DefaultAvatarRepositoryTest.class
+com/erudika/scoold/utils/avatars/GravatarAvatarGeneratorTest.class
+com/erudika/scoold/utils/avatars/ImgurAvatarRepositoryTest.class
+com/erudika/scoold/utils/avatars/CloudinaryAvatarRepositoryTest.class
