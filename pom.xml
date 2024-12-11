@@ -1,0 +1,451 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+				 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.erudika</groupId>
+	<artifactId>scoold</artifactId>
+	<version>1.64.0</version>
+	<packaging>${packaging.type}</packaging>
+
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>3.4.0</version>
+	</parent>
+
+	<organization>
+		<name>Erudika</name>
+		<url>https://erudika.com</url>
+	</organization>
+
+	<name>Scoold</name>
+	<description>Scoold is an open source Q and A platform for teams.</description>
+	<url>https://scoold.com</url>
+
+	<developers>
+		<developer>
+			<id>albogdano</id>
+			<name>Alex Bogdanovski</name>
+			<email>alex@erudika.com</email>
+			<url>https://github.com/albogdano</url>
+			<roles>
+				<role>developer</role>
+			</roles>
+			<properties>
+				<picUrl>http://0.gravatar.com/avatar/5aee63b92a66153f25798ad494255b33</picUrl>
+			</properties>
+		</developer>
+	</developers>
+
+	<scm>
+		<connection>scm:git:https://github.com/Erudika/scoold.git</connection>
+		<developerConnection>scm:git:https://github.com/Erudika/scoold.git</developerConnection>
+		<url>https://github.com/Erudika/scoold</url>
+		<tag>HEAD</tag>
+	</scm>
+
+	<issueManagement>
+		<system>GitHub</system>
+		<url>https://github.com/Erudika/scoold/issues</url>
+	</issueManagement>
+
+	<properties>
+		<endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+	</properties>
+
+	<dependencies>
+		<!-- PARA CLIENT -->
+		<dependency>
+			<groupId>com.erudika</groupId>
+			<artifactId>para-client</artifactId>
+			<version>1.50.3</version>
+		</dependency>
+
+		<!-- VELOCITY -->
+		<dependency>
+			<groupId>org.apache.velocity</groupId>
+			<artifactId>velocity-engine-core</artifactId>
+			<version>2.4</version>
+		</dependency>
+
+		<!-- SPRING BOOT -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+<!--			<exclusions>
+				<exclusion>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-tomcat</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.apache.logging.log4j</groupId>
+					<artifactId>log4j-to-slf4j</artifactId>
+				</exclusion>
+			</exclusions>-->
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-logging</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-mail</artifactId>
+		</dependency>
+
+		<!--==============================================-->
+		<!-- PLEASE READ BEFORE ENABLING DEVTOOLS: -->
+		<!-- First, you MUST enable fork mode for the Spring Boot Maven plugin below. -->
+		<!--
+			When you run the project with spring-boot:run you MUST ALSO set the following system property:
+			-Dspring-boot.run.jvmArguments="-Dconfig.file=src/main/resources/application.conf"
+
+			Change the path to your configuration file accordingly.
+		-->
+		<!--==============================================-->
+<!--		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<optional>true</optional>
+		</dependency>-->
+
+		<!-- MISC -->
+		<dependency>
+			<groupId>org.apache.httpcomponents.core5</groupId>
+			<artifactId>httpcore5</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.httpcomponents.client5</groupId>
+			<artifactId>httpclient5</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.nimbusds</groupId>
+			<artifactId>nimbus-jose-jwt</artifactId>
+			<version>9.41.2</version>
+		</dependency>
+		<dependency>
+			<groupId>com.cloudinary</groupId>
+			<artifactId>cloudinary-http45</artifactId>
+			<version>1.39.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.github.dfabulich</groupId>
+			<artifactId>sitemapgen4j</artifactId>
+			<version>1.1.2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-text</artifactId>
+			<version>[1.12.0,)</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>[3.15.0,)</version>
+		</dependency>
+		<dependency>
+			<groupId>org.yaml</groupId>
+			<artifactId>snakeyaml</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>net.thauvin.erik</groupId>
+			<artifactId>akismet-kotlin</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+		<!--QR Code generator-->
+		<dependency>
+			<groupId>net.logicsquad</groupId>
+			<artifactId>qr4j</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<!-- TESTING -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-core</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<finalName>scoold-${project.version}</finalName>
+
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>templating-maven-plugin</artifactId>
+					<version>3.0.0</version>
+					<executions>
+						<execution>
+							<id>generate-verion-class</id>
+							<goals>
+								<goal>filter-sources</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<excludes>
+					<exclude>application.conf</exclude>
+				</excludes>
+				<filtering>false</filtering>
+			</resource>
+		</resources>
+
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>buildnumber-maven-plugin</artifactId>
+				<version>3.2.1</version>
+				<configuration>
+					<revisionOnScmFailure>UNKNOWN</revisionOnScmFailure>
+					<getRevisionOnlyOnce>true</getRevisionOnlyOnce>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>create</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>templating-maven-plugin</artifactId>
+			</plugin>
+
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<!--==============================================-->
+					<!-- ENABLE FORK MODE IF YOU WANT TO USE DEVTOOLS -->
+					<!--<fork>false</fork>-->
+					<!--==============================================-->
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>repackage</goal>
+						</goals>
+						<configuration>
+							<executable>true</executable>
+							<mainClass>com.erudika.scoold.ScooldServer</mainClass>
+							<excludeDevtools>true</excludeDevtools>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.13.0</version>
+				<configuration>
+					<release>17</release>
+					<showDeprecation>true</showDeprecation>
+					<encoding>${project.build.sourceEncoding}</encoding>
+					<showWarnings>true</showWarnings>
+					<showDeprecation>true</showDeprecation>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-checkstyle-plugin</artifactId>
+				<version>3.5.0</version>
+				<dependencies>
+					<dependency>
+						<groupId>com.puppycrawl.tools</groupId>
+						<artifactId>checkstyle</artifactId>
+						<version>9.2</version>
+					</dependency>
+				</dependencies>
+				<executions>
+					<execution>
+						<id>validate-core</id>
+						<phase>validate</phase>
+						<configuration>
+							<configLocation>${basedir}/src/main/resources/checkstyle.xml</configLocation>
+							<consoleOutput>true</consoleOutput>
+							<failsOnError>true</failsOnError>
+							<linkXRef>false</linkXRef>
+							<excludes>**/module-info.java</excludes>
+						</configuration>
+						<goals>
+							<goal>check</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>3.5.1</version>
+				<configuration>
+					<!--<argLine>-Xmx256m  ${surefireArgLine}</argLine>-->
+					<skipTests>${skipTests}</skipTests>
+					<!--					<parallel>methods</parallel>
+					<threadCount>10</threadCount>
+					<forkCount>2C</forkCount>-->
+				</configuration>
+			</plugin>
+
+<!--			<plugin>
+				<groupId>org.sonarsource.scanner.maven</groupId>
+				<artifactId>sonar-maven-plugin</artifactId>
+				<version>3.11.0.3922</version>
+			</plugin>-->
+		</plugins>
+	</build>
+
+	<profiles>
+		<profile>
+			<id>jar</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<packaging.type>jar</packaging.type>
+			</properties>
+		</profile>
+		<profile>
+			<id>war</id>
+			<properties>
+				<packaging.type>war</packaging.type>
+			</properties>
+			<dependencies>
+				<dependency>
+					<groupId>jakarta.servlet</groupId>
+					<artifactId>jakarta.servlet-api</artifactId>
+					<scope>provided</scope>
+				</dependency>
+			</dependencies>
+		</profile>
+		<profile>
+			<id>native</id>
+			<properties>
+				<packaging.type>jar</packaging.type>
+			</properties>
+			<dependencies>
+				<dependency>
+					<groupId>jakarta.servlet</groupId>
+					<artifactId>jakarta.servlet-api</artifactId>
+					<scope>provided</scope>
+				</dependency>
+				<dependency>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-web</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-logging</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-mail</artifactId>
+				</dependency>
+			</dependencies>
+			<build>
+				<resources>
+					<resource>
+						<directory>src/main/resources/</directory>
+						<excludes>
+							<exclude>logback.xml</exclude>
+						</excludes>
+					</resource>
+				</resources>
+				<plugins>
+					<plugin>
+						<groupId>org.graalvm.buildtools</groupId>
+						<artifactId>native-maven-plugin</artifactId>
+						<version>0.10.3</version>
+						<extensions>true</extensions>
+						<executions>
+							<execution>
+								<id>build-native</id>
+								<goals>
+									<goal>compile-no-fork</goal>
+								</goals>
+								<phase>package</phase>
+							</execution>
+						</executions>
+						<configuration>
+							<buildArgs>
+								<!--THIS CAUSES SOME CONFLICTS WITH AZURE CORE WHERE IT'S INITIALIZED AT BUILD TIME-->
+								<buildArg>--initialize-at-run-time=org.slf4j.LoggerFactory</buildArg>
+								<buildArg>-H:+IncludeAllLocales</buildArg>
+								<buildArg>-H:ConfigurationFileDirectories=src/main/resources/META-INF/native-image/com.erudika/scoold/</buildArg>
+							</buildArgs>
+							<mainClass>com.erudika.scoold.ScooldServer</mainClass>
+							<agentConfiguration>
+								<enabled>true</enabled>
+							</agentConfiguration>
+							<metadataRepository>
+								<enabled>true</enabled>
+							</metadataRepository>
+						</configuration>
+					</plugin>
+					<plugin>
+						<groupId>org.springframework.boot</groupId>
+						<artifactId>spring-boot-maven-plugin</artifactId>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-assembly-plugin</artifactId>
+						<version>3.7.1</version>
+						<executions>
+							<execution>
+								<id>zip-assembly</id>
+								<phase>package</phase>
+								<goals>
+									<goal>single</goal>
+								</goals>
+								<configuration>
+									<finalName>function</finalName>
+									<descriptors>
+										<descriptor>src/assembly/zip.xml</descriptor>
+									</descriptors>
+									<attach>false</attach>
+									<appendAssemblyId>false</appendAssemblyId>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+
+					<plugin>
+						<artifactId>maven-failsafe-plugin</artifactId>
+						<version>3.5.1</version>
+						<executions>
+							<execution>
+								<goals>
+									<goal>integration-test</goal>
+									<goal>verify</goal>
+								</goals>
+								<configuration>
+									<systemPropertyVariables>
+										<native.image.path>${project.build.directory}/scoold</native.image.path>
+										<java.util.logging.manager>org.jboss.logmanager.LogManager</java.util.logging.manager>
+										<maven.home>${maven.home}</maven.home>
+									</systemPropertyVariables>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+
+</project>
+
